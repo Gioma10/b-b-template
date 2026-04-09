@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Mediterranean Palette */
+  --color-navy:          #08192E;
+  --color-navy-800:      #0B1F3A;
+  --color-navy-700:      #0F2A4A;
+  --color-navy-600:      #1A3A5C;
+  --color-navy-500:      #1F4D7A;
+  --color-gold:          #C9A84C;
+  --color-gold-light:    #E2C06A;
+  --color-gold-dark:     #A8872F;
+  --color-cream:         #F5EDD6;
+  --color-cream-dark:    #E4D3AC;
+  --color-sand:          #C8B898;
+  --color-sea:           #1B6CA8;
+  --color-sea-light:     #4A9CC7;
+  --color-terracotta:    #B85C38;
+
+  /* Typography */
+  --font-display: var(--font-cormorant);
+  --font-body:    var(--font-raleway);
+
+  /* Breakpoints */
+  --breakpoint-xs: 480px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #08192E; }
+::-webkit-scrollbar-thumb  { background: #C9A84C; border-radius: 3px; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #08192E;
+  color: #F5EDD6;
+  font-family: var(--font-raleway), Arial, sans-serif;
+}
+
+/* ── Animations ─────────────────────────────────── */
+@keyframes wave-slow {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
+  50%       { box-shadow: 0 0 40px rgba(201,168,76,0.6); }
+}
+
+.animate-wave-slow { animation: wave-slow 18s linear infinite; }
+.animate-float     { animation: float 6s ease-in-out infinite; }
+.animate-fade-up   { animation: fade-up 0.8s ease both; }
+.animate-pulse-glow{ animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ── Gold shimmer text ─────────────────────────── */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #C9A84C 0%,
+    #F0D98A 40%,
+    #C9A84C 60%,
+    #A8872F 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Section divider wave ──────────────────────── */
+.wave-divider svg { display: block; }
+
+/* ── Glass card ────────────────────────────────── */
+.glass {
+  background: rgba(15, 42, 74, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+/* ── Dotted Mediterranean grid bg ─────────────── */
+.dot-bg {
+  background-image: radial-gradient(rgba(201,168,76,0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
