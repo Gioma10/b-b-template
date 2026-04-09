@@ -1,7 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CircleCheckBig, Gem, KeyRound, Waves, Zap, type LucideIcon } from "lucide-react";
 import Link from "next/link";
+
+const trustSignals: { label: string; Icon: LucideIcon }[] = [
+  { label: "Check-in H24", Icon: KeyRound },
+  { label: "Cancellazione flessibile", Icon: CircleCheckBig },
+  { label: "Prezzi trasparenti", Icon: Gem },
+  { label: "Risposta rapida", Icon: Zap },
+];
 
 export default function BookingCTA() {
   return (
@@ -32,7 +40,7 @@ export default function BookingCTA() {
       </div>
 
       {/* Decorative horizontal lines */}
-      <div className="absolute top-1/2 inset-x-0 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent pointer-events-none" />
+      <div className="absolute top-1/2 inset-x-0 -translate-y-1/2 h-px bg-linear-to-r from-transparent via-gold/15 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <motion.div
@@ -44,7 +52,7 @@ export default function BookingCTA() {
           {/* Icon */}
           <div className="flex justify-center mb-8">
             <div className="w-16 h-16 border border-gold/30 flex items-center justify-center animate-pulse-glow">
-              <span className="text-2xl">🌊</span>
+              <Waves className="h-7 w-7 text-gold" aria-hidden />
             </div>
           </div>
 
@@ -85,14 +93,9 @@ export default function BookingCTA() {
 
           {/* Trust signals */}
           <div className="flex flex-wrap items-center justify-center gap-8 mt-14 pt-10 border-t border-gold/10">
-            {[
-              { label: "Check-in H24", icon: "🔑" },
-              { label: "Cancellazione flessibile", icon: "✅" },
-              { label: "Prezzi trasparenti", icon: "💎" },
-              { label: "Risposta rapida", icon: "⚡" },
-            ].map((t) => (
+            {trustSignals.map((t) => (
               <div key={t.label} className="flex items-center gap-2">
-                <span>{t.icon}</span>
+                <t.Icon className="h-4 w-4 text-gold" aria-hidden />
                 <span className="font-body text-cream/50 text-xs tracking-wide">
                   {t.label}
                 </span>

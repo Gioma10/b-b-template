@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { KeyRound, Plane, Ship, Waves, type LucideIcon } from "lucide-react";
 
-const stats = [
-  { icon: "✈️", label: "Aeroporto",       value: "5 min",         sub: "in auto" },
-  { icon: "🚢", label: "Porto di Olbia",   value: "8 min",         sub: "in auto" },
-  { icon: "🌊", label: "Costa Smeralda",   value: "30 min",        sub: "in auto" },
-  { icon: "🔑", label: "Check-in",         value: "Flessibile",    sub: "H24" },
+const stats: { Icon: LucideIcon; label: string; value: string; sub: string }[] = [
+  { Icon: Plane, label: "Aeroporto", value: "5 min", sub: "in auto" },
+  { Icon: Ship, label: "Porto di Olbia", value: "8 min", sub: "in auto" },
+  { Icon: Waves, label: "Costa Smeralda", value: "30 min", sub: "in auto" },
+  { Icon: KeyRound, label: "Check-in", value: "Flessibile", sub: "H24" },
 ];
 
 export default function StatsBar() {
@@ -30,9 +31,7 @@ export default function StatsBar() {
               {/* Hover bg */}
               <div className="absolute inset-0 bg-gold/0 group-hover:bg-gold/5 transition-colors duration-500" />
 
-              <span className="text-3xl mb-3" role="img" aria-label={stat.label}>
-                {stat.icon}
-              </span>
+              <stat.Icon className="h-8 w-8 mb-3 text-gold" aria-hidden />
               <p className="font-body text-[9px] tracking-[0.3em] uppercase text-gold mb-2 font-semibold">
                 {stat.label}
               </p>

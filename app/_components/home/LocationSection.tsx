@@ -1,14 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Building2, MapPin, Palmtree, Plane, Sailboat, Ship, Umbrella, type LucideIcon } from "lucide-react";
 
-const attractions = [
-  { name: "Aeroporto Olbia-Costa Smeralda", dist: "5 min",  icon: "✈️" },
-  { name: "Porto di Olbia",                 dist: "8 min",  icon: "🚢" },
-  { name: "Centro storico di Olbia",        dist: "10 min", icon: "🏛️" },
-  { name: "Spiaggia di San Teodoro",        dist: "25 min", icon: "🏖️" },
-  { name: "Costa Smeralda (Porto Cervo)",   dist: "30 min", icon: "⛵" },
-  { name: "La Maddalena (Arcipelago)",      dist: "45 min", icon: "🏝️" },
+const attractions: { name: string; dist: string; Icon: LucideIcon }[] = [
+  { name: "Aeroporto Olbia-Costa Smeralda", dist: "5 min", Icon: Plane },
+  { name: "Porto di Olbia", dist: "8 min", Icon: Ship },
+  { name: "Centro storico di Olbia", dist: "10 min", Icon: Building2 },
+  { name: "Spiaggia di San Teodoro", dist: "25 min", Icon: Umbrella },
+  { name: "Costa Smeralda (Porto Cervo)", dist: "30 min", Icon: Sailboat },
+  { name: "La Maddalena (Arcipelago)", dist: "45 min", Icon: Palmtree },
 ];
 
 export default function LocationSection() {
@@ -51,11 +52,11 @@ export default function LocationSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                 >
-                  <span className="text-lg w-8 text-center flex-shrink-0">{a.icon}</span>
+                  <a.Icon className="h-5 w-5 text-gold/80 shrink-0" aria-hidden />
                   <span className="font-body text-cream/65 text-sm flex-1 group-hover:text-cream transition-colors duration-200">
                     {a.name}
                   </span>
-                  <span className="font-body text-gold text-sm font-medium flex-shrink-0">
+                  <span className="font-body text-gold text-sm font-medium shrink-0">
                     {a.dist}
                   </span>
                 </motion.div>
@@ -141,7 +142,7 @@ export default function LocationSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <span className="text-xl">📍</span>
+              <MapPin className="h-5 w-5 text-gold mt-0.5" aria-hidden />
               <div>
                 <p className="font-body text-cream font-semibold text-sm">Via Alessandria 12</p>
                 <p className="font-body text-cream/50 text-sm">07026 Olbia OT, Sardegna</p>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
 
 const navLinks = [
   { href: "/camere",     label: "Camere" },
@@ -7,10 +8,10 @@ const navLinks = [
   { href: "/contatti",   label: "Contatti" },
 ];
 
-const contactInfo = [
-  { icon: "📍", label: "Via Alessandria 12, 07026 Olbia OT" },
-  { icon: "📞", label: "+39 347 123 4567" },
-  { icon: "✉️", label: "info@olbiahomesardinia.it" },
+const contactInfo: { Icon: LucideIcon; label: string }[] = [
+  { Icon: MapPin, label: "Via Alessandria 12, 07026 Olbia OT" },
+  { Icon: Phone, label: "+39 347 123 4567" },
+  { Icon: Mail, label: "info@olbiahomesardinia.it" },
 ];
 
 export default function Footer() {
@@ -80,7 +81,7 @@ export default function Footer() {
             <ul className="space-y-4">
               {contactInfo.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-base mt-0.5">{item.icon}</span>
+                  <item.Icon className="h-4 w-4 mt-0.5 text-gold shrink-0" aria-hidden />
                   <span className="font-body text-cream/60 text-sm leading-relaxed">
                     {item.label}
                   </span>

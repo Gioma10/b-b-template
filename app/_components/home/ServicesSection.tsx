@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Car, Coffee, KeyRound, Leaf, Shirt, Snowflake, Tv, Wifi, type LucideIcon } from "lucide-react";
 
-const services = [
-  { icon: "📶",  label: "WiFi Gratuito",         desc: "Connessione ultra-veloce in tutta la struttura" },
-  { icon: "❄️",  label: "Aria Condizionata",      desc: "Clima perfetto in ogni stagione" },
-  { icon: "🚗",  label: "Parcheggio Privato",     desc: "Posto auto gratuito incluso" },
-  { icon: "☕",  label: "Colazione",              desc: "Prodotti freschi sardi ogni mattina" },
-  { icon: "🔑",  label: "Check-in H24",           desc: "Arrivi a qualsiasi ora, nessun problema" },
-  { icon: "📺",  label: "TV Smart 4K",            desc: "Streaming e canali internazionali" },
-  { icon: "🧺",  label: "Cambio Biancheria",      desc: "Lenzuola e asciugamani sempre freschi" },
-  { icon: "🌿",  label: "Prodotti Bio",           desc: "Amenities naturali e cosmetici locali" },
+const services: { Icon: LucideIcon; label: string; desc: string }[] = [
+  { Icon: Wifi, label: "WiFi Gratuito", desc: "Connessione ultra-veloce in tutta la struttura" },
+  { Icon: Snowflake, label: "Aria Condizionata", desc: "Clima perfetto in ogni stagione" },
+  { Icon: Car, label: "Parcheggio Privato", desc: "Posto auto gratuito incluso" },
+  { Icon: Coffee, label: "Colazione", desc: "Prodotti freschi sardi ogni mattina" },
+  { Icon: KeyRound, label: "Check-in H24", desc: "Arrivi a qualsiasi ora, nessun problema" },
+  { Icon: Tv, label: "TV Smart 4K", desc: "Streaming e canali internazionali" },
+  { Icon: Shirt, label: "Cambio Biancheria", desc: "Lenzuola e asciugamani sempre freschi" },
+  { Icon: Leaf, label: "Prodotti Bio", desc: "Amenities naturali e cosmetici locali" },
 ];
 
 export default function ServicesSection() {
@@ -59,9 +60,7 @@ export default function ServicesSection() {
               transition={{ duration: 0.5, delay: i * 0.07 }}
               whileHover={{ y: -4 }}
             >
-              <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">
-                {s.icon}
-              </span>
+              <s.Icon className="h-8 w-8 mb-4 text-gold/90 block group-hover:scale-110 transition-transform duration-300" aria-hidden />
               <h3 className="font-body text-cream text-sm font-semibold mb-2 group-hover:text-gold transition-colors duration-300">
                 {s.label}
               </h3>
