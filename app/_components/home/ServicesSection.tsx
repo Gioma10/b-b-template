@@ -57,9 +57,9 @@ export default function ServicesSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {services.map((s, i) => (
-            <ScrollReveal key={s.label} from="scale" delay={i * 0.07} duration={0.5}>
+            <ScrollReveal key={s.label} from="scale" delay={i * 0.07} duration={0.5} className="h-full">
               <motion.div
-                className="glass p-6 group hover:border-gold/30 hover:bg-gold/5 transition-all duration-500 cursor-default"
+                className="glass p-6 group hover:border-gold/30 hover:bg-gold/5 transition-all duration-500 cursor-default h-full"
                 whileHover={{ y: -4 }}
               >
                 <s.Icon className="h-8 w-8 mb-4 text-gold/90 block group-hover:scale-110 transition-transform duration-300" aria-hidden />
