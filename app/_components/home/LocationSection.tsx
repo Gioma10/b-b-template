@@ -14,7 +14,7 @@ const attractions: { name: string; dist: string; Icon: LucideIcon }[] = [
 
 export default function LocationSection() {
   return (
-    <section className="relative py-28 bg-navy overflow-hidden">
+    <section className="relative py-28 bg-navy-800 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-start">
           {/* Left – content */}

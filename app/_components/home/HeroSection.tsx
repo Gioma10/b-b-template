@@ -14,12 +14,19 @@ export default function HeroSection() {
     <section ref={ref} className="relative min-h-screen flex flex-col justify-end overflow-hidden">
       {/* ── Panoramic background + emerald overlays ── */}
       <motion.div className="absolute inset-0" style={{ y }}>
-        <img
-          src="/hero-costa-smeralda.png"
-          alt="Panoramica della Costa Smeralda"
+        <video
           className="absolute inset-0 h-full w-full object-cover"
-        />
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
+        >
+          <source src="/18052871-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-theme-hero-base" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/30 to-black/20" />
 
         {/* Shimmer light rays */}
         <div className="absolute inset-0 opacity-35 bg-theme-hero-rays" />
@@ -71,14 +78,14 @@ export default function HeroSection() {
           transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="w-14 h-px bg-gold" />
-          <span className="font-body text-[10px] tracking-[0.35em] uppercase text-gold">
+          <span className="font-body text-[10px] tracking-[0.35em] uppercase text-gold drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
             Olbia · Sardegna · Costa Smeralda
           </span>
         </motion.div>
 
         {/* Heading */}
         <motion.h1
-          className="font-display leading-[0.92] mb-8"
+          className="font-display leading-[0.92] mb-8 drop-shadow-[0_4px_20px_rgba(0,0,0,0.65)]"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
@@ -94,7 +101,7 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <motion.p
-          className="font-body text-cream/55 text-base sm:text-lg leading-relaxed max-w-lg mb-12"
+          className="font-body text-cream/85 text-base sm:text-lg leading-relaxed max-w-lg mb-12 drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}

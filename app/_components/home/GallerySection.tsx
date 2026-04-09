@@ -6,37 +6,31 @@ import { motion } from "framer-motion";
 const galleryItems = [
   {
     label: "Vista Mare",
-    aspect: "aspect-[4/3]",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
   },
   {
     label: "Giardino",
-    aspect: "aspect-square",
     image:
       "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80",
   },
   {
     label: "Tramonto",
-    aspect: "aspect-[3/4]",
     image:
       "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1200&q=80",
   },
   {
     label: "Camera Azzurra",
-    aspect: "aspect-[4/3]",
     image:
       "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
   },
   {
     label: "Suite Corallo",
-    aspect: "aspect-square",
     image:
       "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=1200&q=80",
   },
   {
     label: "Terrazza",
-    aspect: "aspect-[4/3]",
     image:
       "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
   },
@@ -73,12 +67,12 @@ export default function GallerySection() {
           </h2>
         </motion.div>
 
-        {/* Masonry-style grid */}
+        {/* Uniform grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {galleryItems.map((item, i) => (
             <motion.div
               key={i}
-              className={`relative ${item.aspect} overflow-hidden group cursor-pointer`}
+              className="relative aspect-4/3 overflow-hidden group cursor-pointer"
               initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}

@@ -52,7 +52,7 @@ export default function ReviewsSection() {
   const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
 
   return (
-    <section className="relative py-28 bg-navy-800 overflow-hidden">
+    <section className="relative py-28 bg-navy overflow-hidden">
       {/* Top wave */}
       <div className="absolute top-0 inset-x-0 pointer-events-none">
         <svg viewBox="0 0 1440 70" className="w-full" preserveAspectRatio="none" aria-hidden>
