@@ -5,6 +5,22 @@ import Link from "next/link";
 import { useRef } from "react";
 import { ACTIVE_COMPANY } from "../../_config/companyProfile";
 
+const particles = Array.from({ length: 40 }, (_, i) => {
+  const x = (i * 37) % 100;
+  const y = (i * 17) % 60;
+  const opacity = 0.12 + ((i * 11) % 45) / 100;
+  const duration = 2 + ((i * 13) % 40) / 10;
+  const delay = ((i * 19) % 40) / 10;
+
+  return {
+    left: `${x}%`,
+    top: `${y}%`,
+    opacity,
+    duration,
+    delay,
+  };
+});
+
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -40,20 +56,20 @@ export default function HeroSection() {
         />
 
         {/* Stars / particles */}
-        {Array.from({ length: 40 }).map((_, i) => (
+        {particles.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-px h-px bg-cream rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top:  `${Math.random() * 60}%`,
-              opacity: Math.random() * 0.5 + 0.1,
+              left: particle.left,
+              top: particle.top,
+              opacity: particle.opacity,
             }}
             animate={{ opacity: [0.1, 0.6, 0.1] }}
             transition={{
-              duration: 2 + Math.random() * 4,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 4,
+              delay: particle.delay,
             }}
           />
         ))}

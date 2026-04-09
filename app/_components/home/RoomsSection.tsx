@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 const rooms = [
@@ -86,11 +87,12 @@ export default function RoomsSection() {
             >
               {/* Illustrative room photo */}
               <div className="relative h-52 bg-linear-to-br from-navy-700 via-sea to-sea-light overflow-hidden">
-                <img
+                <Image
                   src={room.image}
                   alt={room.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/20 to-transparent" />
                 {/* Decorative pattern */}

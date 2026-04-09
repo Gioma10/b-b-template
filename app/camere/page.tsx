@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 const rooms = [
@@ -134,11 +135,12 @@ export default function CamerePage() {
                 i % 2 === 1 ? "md:order-2" : ""
               }`}
             >
-              <img
+              <Image
                 src={room.image}
                 alt={room.name}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="absolute inset-0 h-full w-full object-cover"
-                loading="lazy"
               />
               <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-navy/30 to-transparent" />
               <div className="absolute inset-0 dot-bg opacity-15" />

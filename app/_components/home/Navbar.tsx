@@ -24,9 +24,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
-
   const isHome = pathname === "/";
 
   return (
@@ -42,7 +39,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="font-display flex items-baseline gap-2 group">
+        <Link href="/" className="font-display flex items-baseline gap-2 group" onClick={() => setMenuOpen(false)}>
           <span className="text-cream text-2xl font-light tracking-wider group-hover:text-gold transition-colors duration-300">
             {ACTIVE_COMPANY.brand.lead}
           </span>
@@ -126,6 +123,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    onClick={() => setMenuOpen(false)}
                     className={`block text-sm tracking-[0.2em] uppercase font-body font-medium transition-colors ${
                       pathname === link.href
                         ? "text-gold"
@@ -138,6 +136,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/contatti"
+                onClick={() => setMenuOpen(false)}
                 className="mt-2 bg-gold text-navy text-[11px] tracking-[0.22em] uppercase font-body font-semibold px-6 py-4 text-center"
               >
                 Prenota Ora

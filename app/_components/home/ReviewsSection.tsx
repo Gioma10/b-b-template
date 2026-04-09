@@ -112,13 +112,13 @@ export default function ReviewsSection() {
             >
               {/* Quote mark */}
               <div className="font-display text-7xl text-gold/10 leading-none -mt-2 mb-2 select-none">
-                "
+                &ldquo;
               </div>
 
               <StarRating count={r.rating} />
 
               <p className="font-body text-cream/65 text-sm leading-relaxed mt-4 mb-6 italic">
-                "{r.text}"
+                &ldquo;{r.text}&rdquo;
               </p>
 
               {/* Reviewer */}

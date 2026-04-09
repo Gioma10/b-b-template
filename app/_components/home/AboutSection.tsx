@@ -54,7 +54,7 @@ export default function AboutSection() {
               {/* Signature quote */}
               <div className="mt-10 pl-6 border-l-2 border-gold/30">
                 <p className="font-display text-gold/80 text-xl italic leading-relaxed">
-                  "Sa terra non si abbandona mai davvero."
+                  &ldquo;Sa terra non si abbandona mai davvero.&rdquo;
                 </p>
                 <p className="font-body text-cream/35 text-xs tracking-widest uppercase mt-2">
                   — Proverbio Sardo
