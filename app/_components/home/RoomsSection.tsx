@@ -12,6 +12,8 @@ const rooms = [
     color: "from-[#0B2D50] to-[#1B6CA8]",
     accent: "#4A9CC7",
     size: "18 m²",
+    image:
+      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1400&q=80",
   },
   {
     name: "Suite Corallo",
@@ -22,6 +24,8 @@ const rooms = [
     accent: "#D4784F",
     size: "32 m²",
     featured: true,
+    image:
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=80",
   },
   {
     name: "Camera Ginepro",
@@ -31,6 +35,8 @@ const rooms = [
     color: "from-[#1A2A0A] to-[#3A6B28]",
     accent: "#5A9E40",
     size: "22 m²",
+    image:
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80",
   },
 ];
 
@@ -84,8 +90,15 @@ export default function RoomsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.12 }}
             >
-              {/* Image placeholder */}
-              <div className={`relative h-52 bg-gradient-to-br ${room.color} overflow-hidden`}>
+              {/* Illustrative room photo */}
+              <div className={`relative h-52 bg-linear-to-br ${room.color} overflow-hidden`}>
+                <img
+                  src={room.image}
+                  alt={room.name}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/20 to-transparent" />
                 {/* Decorative pattern */}
                 <div className="absolute inset-0 opacity-20 dot-bg" />
 
@@ -121,7 +134,7 @@ export default function RoomsSection() {
                 <ul className="space-y-2 mb-6">
                   {room.features.map((f) => (
                     <li key={f} className="flex items-center gap-3 font-body text-cream/55 text-sm">
-                      <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
+                      <span className="w-1 h-1 rounded-full bg-gold shrink-0" />
                       {f}
                     </li>
                   ))}

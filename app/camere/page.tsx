@@ -11,6 +11,8 @@ const rooms = [
     size: "18 m²",
     capacity: "2 ospiti",
     gradient: "from-[#0B2D50] via-[#1B6CA8] to-[#4A9CC7]",
+    image:
+      "https://images.unsplash.com/photo-1616594039964-3d6d56b95d10?auto=format&fit=crop&w=1600&q=80",
     features: [
       "Letto matrimoniale 160×200",
       "Vista sul cortile interno",
@@ -30,6 +32,8 @@ const rooms = [
     size: "32 m²",
     capacity: "2 ospiti",
     gradient: "from-[#3A1A0A] via-[#B85C38] to-[#E8A080]",
+    image:
+      "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=1600&q=80",
     featured: true,
     features: [
       "King size bed 180×200",
@@ -50,6 +54,8 @@ const rooms = [
     size: "22 m²",
     capacity: "2 ospiti",
     gradient: "from-[#1A2A0A] via-[#3A6B28] to-[#5A9E40]",
+    image:
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1600&q=80",
     features: [
       "2 letti singoli separati",
       "Balconcino con vista giardino",
@@ -69,6 +75,8 @@ const rooms = [
     size: "14 m²",
     capacity: "1 ospite",
     gradient: "from-[#1A1A2A] via-[#3A3A5C] to-[#5A5A8A]",
+    image:
+      "https://images.unsplash.com/photo-1617104551722-3b2d51366473?auto=format&fit=crop&w=1600&q=80",
     features: [
       "Letto singolo 120×200",
       "Vista cortile",
@@ -132,10 +140,17 @@ export default function CamerePage() {
           >
             {/* Image */}
             <div
-              className={`relative h-64 md:h-auto bg-gradient-to-br ${room.gradient} ${
+              className={`relative h-64 md:h-auto bg-linear-to-br ${room.gradient} ${
                 i % 2 === 1 ? "md:order-2" : ""
               }`}
             >
+              <img
+                src={room.image}
+                alt={room.name}
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-navy/30 to-transparent" />
               <div className="absolute inset-0 dot-bg opacity-15" />
               {room.featured && (
                 <div className="absolute top-4 left-4 bg-gold text-navy text-[10px] tracking-[0.2em] uppercase font-body font-bold px-3 py-1.5">
@@ -164,7 +179,7 @@ export default function CamerePage() {
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-8">
                   {room.features.map((f) => (
                     <div key={f} className="flex items-center gap-2">
-                      <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
+                      <span className="w-1 h-1 rounded-full bg-gold shrink-0" />
                       <span className="font-body text-cream/55 text-xs">{f}</span>
                     </div>
                   ))}

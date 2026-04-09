@@ -2,14 +2,44 @@
 
 import { motion } from "framer-motion";
 
-// Placeholder gallery items with Mediterranean-evocative gradients
+// Illustrative gallery items (temporary stock photos)
 const galleryItems = [
-  { gradient: "from-[#0B2D50] via-[#1B6CA8] to-[#4A9CC7]", label: "Vista Mare",       aspect: "aspect-[4/3]" },
-  { gradient: "from-[#1A2A0A] via-[#2E5D1C] to-[#4A8C30]", label: "Giardino",         aspect: "aspect-square" },
-  { gradient: "from-[#3A1A0A] via-[#8B3A1C] to-[#C9A84C]", label: "Tramonto",         aspect: "aspect-[3/4]" },
-  { gradient: "from-[#071B32] via-[#0F2A4A] to-[#1B6CA8]", label: "Camera Azzurra",   aspect: "aspect-[4/3]" },
-  { gradient: "from-[#2A1A0A] via-[#B85C38] to-[#E8A080]", label: "Suite Corallo",    aspect: "aspect-square" },
-  { gradient: "from-[#071B32] via-[#1A3A5C] to-[#2E6B8A]", label: "Terrazza",         aspect: "aspect-[4/3]" },
+  {
+    label: "Vista Mare",
+    aspect: "aspect-[4/3]",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    label: "Giardino",
+    aspect: "aspect-square",
+    image:
+      "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    label: "Tramonto",
+    aspect: "aspect-[3/4]",
+    image:
+      "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    label: "Camera Azzurra",
+    aspect: "aspect-[4/3]",
+    image:
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    label: "Suite Corallo",
+    aspect: "aspect-square",
+    image:
+      "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    label: "Terrazza",
+    aspect: "aspect-[4/3]",
+    image:
+      "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
+  },
 ];
 
 export default function GallerySection() {
@@ -54,10 +84,13 @@ export default function GallerySection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
             >
-              {/* Gradient placeholder (replace with <Image> when ready) */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${item.gradient} transition-transform duration-700 group-hover:scale-105`}
+              <img
+                src={item.image}
+                alt={item.label}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
               />
+              <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/20 to-transparent" />
 
               {/* Dot texture overlay */}
               <div className="absolute inset-0 dot-bg opacity-20" />
