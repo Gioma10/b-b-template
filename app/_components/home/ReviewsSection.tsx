@@ -11,7 +11,7 @@ const reviews = [
     platform: "Booking.com",
     date: "Settembre 2025",
     initial: "S",
-    color: "#1B6CA8",
+    color: "#1F8F6B",
   },
   {
     name: "Marco R.",
@@ -56,7 +56,7 @@ export default function ReviewsSection() {
       {/* Top wave */}
       <div className="absolute top-0 inset-x-0 pointer-events-none">
         <svg viewBox="0 0 1440 70" className="w-full" preserveAspectRatio="none" aria-hidden>
-          <path d="M0,0 C480,70 960,0 1440,50 L1440,0 Z" fill="#08192E" />
+          <path d="M0,0 C480,70 960,0 1440,50 L1440,0 Z" fill="#061A14" />
         </svg>
       </div>
 
@@ -124,7 +124,7 @@ export default function ReviewsSection() {
               {/* Reviewer */}
               <div className="flex items-center gap-4 pt-5 border-t border-gold/10">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-body font-semibold flex-shrink-0"
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-body font-semibold shrink-0"
                   style={{ background: r.color }}
                 >
                   {r.initial}

@@ -8,7 +8,7 @@ export default function PosizionePage() {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(175deg, #040D1A 0%, #071B32 60%, #08192E 100%)",
+            background: "linear-gradient(175deg, #1B655F 0%, #257A73 60%, #15504A 100%)",
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6">

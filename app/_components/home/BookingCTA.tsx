@@ -19,7 +19,7 @@ export default function BookingCTA() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, #040D1A 0%, #071B32 40%, #0B2D50 70%, #071B32 100%)",
+            "linear-gradient(135deg, #1B655F 0%, #257A73 40%, #309089 70%, #1B655F 100%)",
         }}
       />
 
@@ -35,7 +35,7 @@ export default function BookingCTA() {
       {/* Top wave */}
       <div className="absolute top-0 inset-x-0 pointer-events-none">
         <svg viewBox="0 0 1440 70" className="w-full" preserveAspectRatio="none" aria-hidden>
-          <path d="M0,50 C480,0 960,70 1440,20 L1440,0 L0,0 Z" fill="#0B1F3A" />
+          <path d="M0,50 C480,0 960,70 1440,20 L1440,0 L0,0 Z" fill="#15504A" />
         </svg>
       </div>
 

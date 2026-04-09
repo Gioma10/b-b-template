@@ -77,7 +77,7 @@ export default function LocationSection() {
                 className="absolute inset-0 border border-gold/15 overflow-hidden"
                 style={{
                   background:
-                    "linear-gradient(135deg, #0B2D50 0%, #071B32 40%, #0F3460 70%, #071B32 100%)",
+                    "linear-gradient(135deg, #184536 0%, #103126 40%, #20614A 70%, #0A241D 100%)",
                 }}
               >
                 {/* Grid lines – fake map */}
@@ -92,8 +92,8 @@ export default function LocationSection() {
 
                 {/* Fake roads */}
                 <svg className="absolute inset-0 w-full h-full opacity-25" aria-hidden>
-                  <line x1="0"   y1="50%" x2="100%" y2="50%" stroke="#4A9CC7" strokeWidth="1.5" />
-                  <line x1="40%" y1="0"   x2="40%"  y2="100%" stroke="#4A9CC7" strokeWidth="1.5" />
+                  <line x1="0"   y1="50%" x2="100%" y2="50%" stroke="#49C19B" strokeWidth="1.5" />
+                  <line x1="40%" y1="0"   x2="40%"  y2="100%" stroke="#49C19B" strokeWidth="1.5" />
                   <line x1="0"   y1="30%" x2="100%" y2="65%"  stroke="#C9A84C" strokeWidth="1" strokeDasharray="6,4" />
                   <line x1="0"   y1="70%" x2="80%"  y2="20%"  stroke="#C9A84C" strokeWidth="0.8" strokeDasharray="4,6" />
                 </svg>
@@ -124,7 +124,7 @@ export default function LocationSection() {
                   <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden>
                     <circle cx="16" cy="16" r="14" fill="none" stroke="#C9A84C" strokeWidth="1" />
                     <polygon points="16,4 13,16 16,14 19,16" fill="#C9A84C" />
-                    <polygon points="16,28 13,16 16,18 19,16" fill="#4A9CC7" />
+                    <polygon points="16,28 13,16 16,18 19,16" fill="#49C19B" />
                     <text x="16" y="8.5" textAnchor="middle" fill="#C9A84C" fontSize="5" fontFamily="sans-serif" fontWeight="bold">N</text>
                   </svg>
                 </div>

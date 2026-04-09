@@ -2,19 +2,19 @@
 
 @theme {
   /* Mediterranean Palette */
-  --color-navy:          #08192E;
-  --color-navy-800:      #0B1F3A;
-  --color-navy-700:      #0F2A4A;
-  --color-navy-600:      #1A3A5C;
-  --color-navy-500:      #1F4D7A;
+  --color-navy:          #0F3A36;
+  --color-navy-800:      #15504A;
+  --color-navy-700:      #1B655F;
+  --color-navy-600:      #257A73;
+  --color-navy-500:      #309089;
   --color-gold:          #C9A84C;
   --color-gold-light:    #E2C06A;
   --color-gold-dark:     #A8872F;
   --color-cream:         #F5EDD6;
   --color-cream-dark:    #E4D3AC;
   --color-sand:          #C8B898;
-  --color-sea:           #1B6CA8;
-  --color-sea-light:     #4A9CC7;
+  --color-sea:           #27AFA6;
+  --color-sea-light:     #68D7CF;
   --color-terracotta:    #B85C38;
 
   /* Typography */
@@ -30,11 +30,11 @@ html {
 }
 
 ::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: #08192E; }
+::-webkit-scrollbar-track  { background: #0F3A36; }
 ::-webkit-scrollbar-thumb  { background: #C9A84C; border-radius: 3px; }
 
 body {
-  background-color: #08192E;
+  background-color: #0F3A36;
   color: #F5EDD6;
   font-family: var(--font-raleway), Arial, sans-serif;
 }
@@ -87,7 +87,7 @@ body {
 
 /* ── Glass card ────────────────────────────────── */
 .glass {
-  background: rgba(15, 42, 74, 0.6);
+  background: rgba(21, 80, 74, 0.58);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(201, 168, 76, 0.15);

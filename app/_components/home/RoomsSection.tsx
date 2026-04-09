@@ -9,8 +9,8 @@ const rooms = [
     type: "Standard Matrimoniale",
     price: "da €80/notte",
     features: ["Letto matrimoniale", "Vista cortile", "AC + WiFi", "Bagno privato"],
-    color: "from-[#0B2D50] to-[#1B6CA8]",
-    accent: "#4A9CC7",
+    color: "from-[#103126] to-[#1F8F6B]",
+    accent: "#49C19B",
     size: "18 m²",
     image:
       "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1400&q=80",
@@ -46,7 +46,7 @@ export default function RoomsSection() {
       {/* Top wave */}
       <div className="absolute top-0 inset-x-0 pointer-events-none">
         <svg viewBox="0 0 1440 70" className="w-full" preserveAspectRatio="none" aria-hidden>
-          <path d="M0,35 C360,70 1080,0 1440,35 L1440,0 L0,0 Z" fill="#08192E" />
+          <path d="M0,35 C360,70 1080,0 1440,35 L1440,0 L0,0 Z" fill="#061A14" />
         </svg>
       </div>
 

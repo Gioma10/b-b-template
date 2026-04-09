@@ -10,9 +10,9 @@ const rooms = [
     price: 80,
     size: "18 m²",
     capacity: "2 ospiti",
-    gradient: "from-[#0B2D50] via-[#1B6CA8] to-[#4A9CC7]",
+    gradient: "from-[#103126] via-[#1F8F6B] to-[#49C19B]",
     image:
-      "https://images.unsplash.com/photo-1616594039964-3d6d56b95d10?auto=format&fit=crop&w=1600&q=80",
+      "https://picsum.photos/seed/camera-azzurra/1600/1000",
     features: [
       "Letto matrimoniale 160×200",
       "Vista sul cortile interno",
@@ -33,7 +33,7 @@ const rooms = [
     capacity: "2 ospiti",
     gradient: "from-[#3A1A0A] via-[#B85C38] to-[#E8A080]",
     image:
-      "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=1600&q=80",
+      "https://picsum.photos/seed/suite-corallo/1600/1000",
     featured: true,
     features: [
       "King size bed 180×200",
@@ -76,7 +76,7 @@ const rooms = [
     capacity: "1 ospite",
     gradient: "from-[#1A1A2A] via-[#3A3A5C] to-[#5A5A8A]",
     image:
-      "https://images.unsplash.com/photo-1617104551722-3b2d51366473?auto=format&fit=crop&w=1600&q=80",
+      "https://picsum.photos/seed/camera-granito/1600/1000",
     features: [
       "Letto singolo 120×200",
       "Vista cortile",
@@ -99,7 +99,7 @@ export default function CamerePage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(175deg, #040D1A 0%, #071B32 60%, #08192E 100%)",
+              "linear-gradient(175deg, #1B655F 0%, #257A73 60%, #15504A 100%)",
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
