@@ -1,20 +1,21 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { ACTIVE_COMPANY } from "../_config/companyProfile";
 
 const contactCards = [
   {
     title: "Indirizzo",
-    value: "Via Alessandria 12, 07026 Olbia OT",
+    value: ACTIVE_COMPANY.contacts.addressLine,
     Icon: MapPin,
   },
   {
     title: "Telefono",
-    value: "+39 347 123 4567",
+    value: ACTIVE_COMPANY.contacts.phone,
     Icon: Phone,
   },
   {
     title: "Email",
-    value: "info@olbiahomesardinia.it",
+    value: ACTIVE_COMPANY.contacts.email,
     Icon: Mail,
   },
 ];

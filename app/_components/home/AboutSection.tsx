@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ACTIVE_COMPANY } from "../../_config/companyProfile";
 
 const values = [
-  { title: "Posizione Strategica",  desc: "Tra aeroporto, porto e Costa Smeralda. Ogni destinazione a portata di mano." },
+  { title: "Posizione Strategica",  desc: ACTIVE_COMPANY.about.strategicDesc },
   { title: "Accoglienza Autentica", desc: "Lo spirito sardo dell'ospitalità. Caloroso, sincero, indimenticabile." },
   { title: "Comfort Garantito",     desc: "Camere curate nei minimi dettagli per un riposo perfetto in qualsiasi stagione." },
 ];
@@ -44,14 +45,10 @@ export default function AboutSection() {
               </h2>
 
               <p className="font-body text-cream/55 text-base leading-relaxed mb-6">
-                Olbia Home Sardinia nasce dall'amore per questa terra straordinaria.
-                Ogni camera racconta una storia fatta di colori del mare, profumi di
-                macchia mediterranea e calore umano autentico.
+                {ACTIVE_COMPANY.about.intro}
               </p>
               <p className="font-body text-cream/55 text-base leading-relaxed">
-                Che tu sia di passaggio o in cerca di una base per esplorare la Costa
-                Smeralda, qui troverai il rifugio perfetto — elegante, confortevole,
-                e sempre vicino a dove devi essere.
+                {ACTIVE_COMPANY.about.outro}
               </p>
 
               {/* Signature quote */}

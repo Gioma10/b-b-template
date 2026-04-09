@@ -2,15 +2,23 @@
 
 import { motion } from "framer-motion";
 import { Building2, MapPin, Palmtree, Plane, Sailboat, Ship, Umbrella, type LucideIcon } from "lucide-react";
+import { ACTIVE_COMPANY, type AttractionKind } from "../../_config/companyProfile";
 
-const attractions: { name: string; dist: string; Icon: LucideIcon }[] = [
-  { name: "Aeroporto Olbia-Costa Smeralda", dist: "5 min", Icon: Plane },
-  { name: "Porto di Olbia", dist: "8 min", Icon: Ship },
-  { name: "Centro storico di Olbia", dist: "10 min", Icon: Building2 },
-  { name: "Spiaggia di San Teodoro", dist: "25 min", Icon: Umbrella },
-  { name: "Costa Smeralda (Porto Cervo)", dist: "30 min", Icon: Sailboat },
-  { name: "La Maddalena (Arcipelago)", dist: "45 min", Icon: Palmtree },
-];
+const iconByKind: Record<AttractionKind, LucideIcon> = {
+  plane: Plane,
+  ship: Ship,
+  building: Building2,
+  beach: Umbrella,
+  sailboat: Sailboat,
+  island: Palmtree,
+};
+
+const attractions: { name: string; dist: string; Icon: LucideIcon }[] =
+  ACTIVE_COMPANY.position.attractions.map((item) => ({
+    name: item.name,
+    dist: item.dist,
+    Icon: iconByKind[item.kind],
+  }));
 
 export default function LocationSection() {
   return (
@@ -37,8 +45,7 @@ export default function LocationSection() {
               <em className="text-gold">tutto il bello</em>
             </h2>
             <p className="font-body text-cream/55 text-base leading-relaxed mb-10">
-              Via Alessandria 12, Olbia — a pochi passi dal centro, con accesso
-              rapido a tutte le destinazioni chiave della Gallura.
+              {ACTIVE_COMPANY.position.sectionIntro}
             </p>
 
             {/* Attractions list */}
@@ -108,8 +115,8 @@ export default function LocationSection() {
                 {/* Label */}
                 <div className="absolute top-1/2 left-2/5 mt-6 -translate-x-1/2">
                   <div className="bg-navy-800/90 border border-gold/30 px-3 py-1.5 whitespace-nowrap">
-                    <p className="font-body text-cream text-xs font-semibold">Olbia Home Sardinia</p>
-                    <p className="font-body text-cream/50 text-[10px]">Via Alessandria 12</p>
+                    <p className="font-body text-cream text-xs font-semibold">{ACTIVE_COMPANY.position.mapTitle}</p>
+                    <p className="font-body text-cream/50 text-[10px]">{ACTIVE_COMPANY.position.mapSubtitle}</p>
                   </div>
                 </div>
 
@@ -138,10 +145,10 @@ export default function LocationSection() {
             >
               <MapPin className="h-5 w-5 text-gold mt-0.5" aria-hidden />
               <div>
-                <p className="font-body text-cream font-semibold text-sm">Via Alessandria 12</p>
-                <p className="font-body text-cream/50 text-sm">07026 Olbia OT, Sardegna</p>
+                <p className="font-body text-cream font-semibold text-sm">{ACTIVE_COMPANY.contacts.addressLine}</p>
+                <p className="font-body text-cream/50 text-sm">{ACTIVE_COMPANY.contacts.cityLine}</p>
                 <a
-                  href="https://maps.google.com"
+                  href={ACTIVE_COMPANY.contacts.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-body text-gold text-xs tracking-wide hover:text-gold-light transition-colors mt-2 inline-block border-b border-gold/30"

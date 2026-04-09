@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
+import { ACTIVE_COMPANY } from "../../_config/companyProfile";
 
 const navLinks = [
   { href: "/camere",     label: "Camere" },
@@ -9,9 +10,9 @@ const navLinks = [
 ];
 
 const contactInfo: { Icon: LucideIcon; label: string }[] = [
-  { Icon: MapPin, label: "Via Alessandria 12, 07026 Olbia OT" },
-  { Icon: Phone, label: "+39 347 123 4567" },
-  { Icon: Mail, label: "info@olbiahomesardinia.it" },
+  { Icon: MapPin, label: ACTIVE_COMPANY.contacts.addressLine },
+  { Icon: Phone, label: ACTIVE_COMPANY.contacts.phone },
+  { Icon: Mail, label: ACTIVE_COMPANY.contacts.email },
 ];
 
 export default function Footer() {
@@ -29,13 +30,19 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="font-display mb-4">
-              <span className="text-cream text-3xl font-light tracking-wider">Olbia </span>
-              <span className="text-gold text-3xl font-light tracking-wider italic">Home</span>
+              <span className="text-cream text-3xl font-light tracking-wider">
+                {ACTIVE_COMPANY.brand.lead}{" "}
+              </span>
+              <span className="text-gold text-3xl font-light tracking-wider italic">
+                {ACTIVE_COMPANY.brand.accent}
+              </span>
               <br />
-              <span className="text-gold/70 text-lg font-light tracking-[0.2em] uppercase">Sardinia</span>
+              <span className="text-gold/70 text-lg font-light tracking-[0.2em] uppercase">
+                {ACTIVE_COMPANY.brand.suffix}
+              </span>
             </div>
             <p className="font-body text-cream/50 text-sm leading-relaxed max-w-xs">
-              Il tuo rifugio nel cuore di Olbia. Camere accoglienti per soggiorni perfetti,
+              Il tuo rifugio nel cuore di {ACTIVE_COMPANY.brand.cityName}. Camere accoglienti per soggiorni perfetti,
               vicino a tutto ciò che conta.
             </p>
             {/* Decorative line */}
@@ -102,7 +109,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-gold/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-body text-cream/30 text-xs tracking-wide">
-            © {new Date().getFullYear()} Olbia Home Sardinia. Tutti i diritti riservati.
+            © {new Date().getFullYear()} {ACTIVE_COMPANY.brand.fullName}. Tutti i diritti riservati.
           </p>
           <div className="flex items-center gap-6">
             <span className="font-body text-cream/30 text-xs">Privacy Policy</span>

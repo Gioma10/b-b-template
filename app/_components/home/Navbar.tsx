@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { ACTIVE_COMPANY } from "../../_config/companyProfile";
 
 const navLinks = [
   { href: "/camere",    label: "Camere" },
@@ -43,10 +44,10 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="font-display flex items-baseline gap-2 group">
           <span className="text-cream text-2xl font-light tracking-wider group-hover:text-gold transition-colors duration-300">
-            Olbia
+            {ACTIVE_COMPANY.brand.lead}
           </span>
           <span className="text-gold text-2xl font-light tracking-wider italic">
-            Home Sardinia
+            {ACTIVE_COMPANY.brand.accent} {ACTIVE_COMPANY.brand.suffix}
           </span>
         </Link>
 

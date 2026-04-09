@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react";
+import { ACTIVE_COMPANY } from "../../_config/companyProfile";
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null);
@@ -70,6 +71,18 @@ export default function HeroSection() {
         className="relative z-10 max-w-7xl mx-auto px-6 w-full pb-36 pt-40"
         style={{ opacity }}
       >
+        <motion.div
+          className="mb-6 inline-flex items-center gap-2 border border-gold/35 bg-black/25 px-4 py-2 backdrop-blur-xs"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+          <span className="font-body text-[10px] tracking-[0.18em] uppercase text-cream/90">
+            {ACTIVE_COMPANY.demo.badge}
+          </span>
+        </motion.div>
+
         {/* Breadcrumb */}
         <motion.div
           className="flex items-center gap-4 mb-8"
@@ -79,7 +92,7 @@ export default function HeroSection() {
         >
           <div className="w-14 h-px bg-gold" />
           <span className="font-body text-[10px] tracking-[0.35em] uppercase text-gold drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
-            Olbia · Sardegna · Costa Smeralda
+            {ACTIVE_COMPANY.hero.breadcrumb}
           </span>
         </motion.div>
 
@@ -95,7 +108,7 @@ export default function HeroSection() {
             <em className="text-gold not-italic gold-shimmer">rifugio</em>
           </span>
           <span className="block text-cream font-light text-[clamp(3rem,9vw,8rem)]">
-            nel cuore di Olbia
+            nel cuore di {ACTIVE_COMPANY.brand.cityName}
           </span>
         </motion.h1>
 
@@ -106,9 +119,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
         >
-          Camere accoglienti a pochi minuti dall'aeroporto e dal porto.
-          <br className="hidden sm:block" />
-          Perfette per soggiorni brevi, arrivi notturni e partenze all'alba.
+          {ACTIVE_COMPANY.hero.subtitle}
         </motion.p>
 
         {/* CTAs */}

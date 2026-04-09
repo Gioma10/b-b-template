@@ -1,5 +1,6 @@
 import BookingCTA from "../_components/home/BookingCTA";
 import LocationSection from "../_components/home/LocationSection";
+import { ACTIVE_COMPANY } from "../_config/companyProfile";
 
 export default function PosizionePage() {
   return (
@@ -17,8 +18,7 @@ export default function PosizionePage() {
             Dove siamo
           </h1>
           <p className="font-body text-cream/55 text-lg max-w-xl leading-relaxed">
-            In posizione strategica tra aeroporto, porto e Costa Smeralda. Ideale per
-            arrivi serali, partenze all&apos;alba e soggiorni comodi.
+            {ACTIVE_COMPANY.position.pageIntro}
           </p>
         </div>
       </section>

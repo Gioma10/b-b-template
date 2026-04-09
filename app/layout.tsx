@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Raleway } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/home/Navbar";
 import Footer from "./_components/home/Footer";
+import { ACTIVE_COMPANY } from "./_config/companyProfile";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -20,9 +21,8 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Olbia Home Sardinia | B&B nel cuore di Olbia",
-  description:
-    "Camere accoglienti a pochi minuti dall'aeroporto e dal porto. Perfette per soggiorni brevi, arrivi notturni e partenze all'alba.",
+  title: ACTIVE_COMPANY.meta.title,
+  description: ACTIVE_COMPANY.meta.description,
 };
 
 export default function RootLayout({
