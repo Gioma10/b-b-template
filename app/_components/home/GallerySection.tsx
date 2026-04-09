@@ -12,7 +12,7 @@ const galleryItems = [
   {
     label: "Giardino",
     image:
-      "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=80",
   },
   {
     label: "Tramonto",
