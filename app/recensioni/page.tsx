@@ -5,12 +5,7 @@ export default function RecensioniPage() {
   return (
     <div className="min-h-screen bg-navy pt-24">
       <section className="relative py-20 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(175deg, #1B655F 0%, #257A73 60%, #15504A 100%)",
-          }}
-        />
+        <div className="absolute inset-0 bg-theme-page-header" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-10 h-px bg-gold" />

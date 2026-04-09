@@ -98,3 +98,23 @@ body {
   background-image: radial-gradient(rgba(201,168,76,0.12) 1px, transparent 1px);
   background-size: 28px 28px;
 }
+
+/* ── Theme surfaces (single source in globals) ─── */
+.bg-theme-hero-base {
+  background: linear-gradient(170deg, rgba(15, 58, 54, 0.45) 0%, rgba(39, 175, 166, 0.28) 55%, rgba(15, 58, 54, 0.6) 100%);
+}
+
+.bg-theme-hero-rays {
+  background:
+    radial-gradient(ellipse 40% 60% at 72% 28%, rgba(201, 168, 76, 0.2) 0%, transparent 58%),
+    radial-gradient(ellipse 30% 40% at 24% 72%, rgba(104, 215, 207, 0.28) 0%, transparent 54%);
+}
+
+.bg-theme-horizon {
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 168, 76, 0.14) 30%, rgba(104, 215, 207, 0.32) 70%, transparent 100%);
+  box-shadow: 0 0 60px 20px rgba(104, 215, 207, 0.18);
+}
+
+.bg-theme-page-header {
+  background: linear-gradient(175deg, #1b655f 0%, #257a73 60%, #15504a 100%);
+}

@@ -73,29 +73,23 @@ export default function LocationSection() {
           >
             <div className="relative aspect-square max-w-lg">
               {/* Map placeholder */}
-              <div
-                className="absolute inset-0 border border-gold/15 overflow-hidden"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #184536 0%, #103126 40%, #20614A 70%, #0A241D 100%)",
-                }}
-              >
+              <div className="absolute inset-0 border border-gold/15 overflow-hidden bg-linear-to-br from-navy-600 via-navy-700 to-navy-800">
                 {/* Grid lines – fake map */}
-                <svg className="absolute inset-0 w-full h-full opacity-15" aria-hidden>
+                <svg className="absolute inset-0 w-full h-full opacity-15 text-gold" aria-hidden>
                   <defs>
                     <pattern id="map-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                      <path d="M40 0 L0 0 0 40" fill="none" stroke="#C9A84C" strokeWidth="0.5" />
+                      <path d="M40 0 L0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
                     </pattern>
                   </defs>
                   <rect width="100%" height="100%" fill="url(#map-grid)" />
                 </svg>
 
                 {/* Fake roads */}
-                <svg className="absolute inset-0 w-full h-full opacity-25" aria-hidden>
-                  <line x1="0"   y1="50%" x2="100%" y2="50%" stroke="#49C19B" strokeWidth="1.5" />
-                  <line x1="40%" y1="0"   x2="40%"  y2="100%" stroke="#49C19B" strokeWidth="1.5" />
-                  <line x1="0"   y1="30%" x2="100%" y2="65%"  stroke="#C9A84C" strokeWidth="1" strokeDasharray="6,4" />
-                  <line x1="0"   y1="70%" x2="80%"  y2="20%"  stroke="#C9A84C" strokeWidth="0.8" strokeDasharray="4,6" />
+                <svg className="absolute inset-0 w-full h-full opacity-25 text-sea-light" aria-hidden>
+                  <line x1="0" y1="50%" x2="100%" y2="50%" stroke="currentColor" strokeWidth="1.5" />
+                  <line x1="40%" y1="0" x2="40%" y2="100%" stroke="currentColor" strokeWidth="1.5" />
+                  <line x1="0" y1="30%" x2="100%" y2="65%" className="text-gold" stroke="currentColor" strokeWidth="1" strokeDasharray="6,4" />
+                  <line x1="0" y1="70%" x2="80%" y2="20%" className="text-gold" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4,6" />
                 </svg>
 
                 {/* Pin */}
@@ -121,11 +115,11 @@ export default function LocationSection() {
 
                 {/* Compass */}
                 <div className="absolute top-4 right-4 opacity-40">
-                  <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden>
-                    <circle cx="16" cy="16" r="14" fill="none" stroke="#C9A84C" strokeWidth="1" />
-                    <polygon points="16,4 13,16 16,14 19,16" fill="#C9A84C" />
-                    <polygon points="16,28 13,16 16,18 19,16" fill="#49C19B" />
-                    <text x="16" y="8.5" textAnchor="middle" fill="#C9A84C" fontSize="5" fontFamily="sans-serif" fontWeight="bold">N</text>
+                  <svg width="32" height="32" viewBox="0 0 32 32" className="text-gold" aria-hidden>
+                    <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" strokeWidth="1" />
+                    <polygon points="16,4 13,16 16,14 19,16" fill="currentColor" />
+                    <polygon points="16,28 13,16 16,18 19,16" className="text-sea-light" fill="currentColor" />
+                    <text x="16" y="8.5" textAnchor="middle" fill="currentColor" fontSize="5" fontFamily="sans-serif" fontWeight="bold">N</text>
                   </svg>
                 </div>
               </div>

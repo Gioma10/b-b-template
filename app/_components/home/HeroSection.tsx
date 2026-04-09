@@ -19,36 +19,14 @@ export default function HeroSection() {
           alt="Panoramica di un B&B vista mare"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse 85% 65% at 50% 0%, rgba(104,215,207,0.42) 0%, transparent 72%),
-              radial-gradient(ellipse 65% 55% at 80% 85%, rgba(15,58,54,0.55) 0%, transparent 65%),
-              linear-gradient(175deg, rgba(5,24,22,0.58) 0%, rgba(21,80,74,0.50) 40%, rgba(15,58,54,0.65) 100%)
-            `,
-          }}
-        />
+        <div className="absolute inset-0 bg-theme-hero-base" />
 
         {/* Shimmer light rays */}
-        <div
-          className="absolute inset-0 opacity-35"
-          style={{
-            background: `
-              radial-gradient(ellipse 40% 60% at 72% 28%, rgba(201,168,76,0.20) 0%, transparent 58%),
-              radial-gradient(ellipse 30% 40% at 24% 72%, rgba(104,215,207,0.28) 0%, transparent 54%)
-            `,
-          }}
-        />
+        <div className="absolute inset-0 opacity-35 bg-theme-hero-rays" />
 
         {/* Animated horizon glow */}
         <motion.div
-          className="absolute inset-x-0 bottom-1/3 h-px"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.14) 30%, rgba(104,215,207,0.32) 70%, transparent 100%)",
-            boxShadow: "0 0 60px 20px rgba(104,215,207,0.18)",
-          }}
+          className="absolute inset-x-0 bottom-1/3 h-px bg-theme-horizon"
           animate={{ opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -76,7 +54,7 @@ export default function HeroSection() {
       {/* ── Wave divider bottom ── */}
       <div className="absolute bottom-0 inset-x-0 pointer-events-none z-10">
         <svg viewBox="0 0 1440 90" className="w-full" preserveAspectRatio="none" aria-hidden>
-          <path d="M0,45 C320,90 780,0 1440,55 L1440,90 L0,90 Z" fill="#0F3A36" />
+          <path d="M0,45 C320,90 780,0 1440,55 L1440,90 L0,90 Z" className="fill-navy" />
         </svg>
       </div>
 

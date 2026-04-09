@@ -10,7 +10,6 @@ const rooms = [
     price: 80,
     size: "18 m²",
     capacity: "2 ospiti",
-    gradient: "from-[#103126] via-[#1F8F6B] to-[#49C19B]",
     image:
       "https://picsum.photos/seed/camera-azzurra/1600/1000",
     features: [
@@ -31,7 +30,6 @@ const rooms = [
     price: 130,
     size: "32 m²",
     capacity: "2 ospiti",
-    gradient: "from-[#3A1A0A] via-[#B85C38] to-[#E8A080]",
     image:
       "https://picsum.photos/seed/suite-corallo/1600/1000",
     featured: true,
@@ -53,7 +51,6 @@ const rooms = [
     price: 95,
     size: "22 m²",
     capacity: "2 ospiti",
-    gradient: "from-[#1A2A0A] via-[#3A6B28] to-[#5A9E40]",
     image:
       "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1600&q=80",
     features: [
@@ -74,7 +71,6 @@ const rooms = [
     price: 65,
     size: "14 m²",
     capacity: "1 ospite",
-    gradient: "from-[#1A1A2A] via-[#3A3A5C] to-[#5A5A8A]",
     image:
       "https://picsum.photos/seed/camera-granito/1600/1000",
     features: [
@@ -95,13 +91,7 @@ export default function CamerePage() {
     <div className="min-h-screen bg-navy pt-24">
       {/* Page header */}
       <div className="relative py-20 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(175deg, #1B655F 0%, #257A73 60%, #15504A 100%)",
-          }}
-        />
+        <div className="absolute inset-0 bg-theme-page-header" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -140,7 +130,7 @@ export default function CamerePage() {
           >
             {/* Image */}
             <div
-              className={`relative h-64 md:h-auto bg-linear-to-br ${room.gradient} ${
+              className={`relative h-64 md:h-auto bg-linear-to-br from-navy-700 via-sea to-sea-light ${
                 i % 2 === 1 ? "md:order-2" : ""
               }`}
             >

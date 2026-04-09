@@ -48,7 +48,7 @@ export default function GallerySection() {
       {/* Top wave */}
       <div className="absolute top-0 inset-x-0 pointer-events-none">
         <svg viewBox="0 0 1440 60" className="w-full" preserveAspectRatio="none" aria-hidden>
-          <path d="M0,30 C720,60 1080,0 1440,30 L1440,0 L0,0 Z" fill="#061A14" />
+          <path d="M0,30 C720,60 1080,0 1440,30 L1440,0 L0,0 Z" className="fill-navy" />
         </svg>
       </div>
 

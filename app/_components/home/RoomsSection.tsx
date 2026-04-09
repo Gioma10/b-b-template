@@ -9,8 +9,6 @@ const rooms = [
     type: "Standard Matrimoniale",
     price: "da €80/notte",
     features: ["Letto matrimoniale", "Vista cortile", "AC + WiFi", "Bagno privato"],
-    color: "from-[#103126] to-[#1F8F6B]",
-    accent: "#49C19B",
     size: "18 m²",
     image:
       "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1400&q=80",
@@ -20,8 +18,6 @@ const rooms = [
     type: "Junior Suite",
     price: "da €130/notte",
     features: ["King size bed", "Soggiorno", "AC + WiFi", "Bagno en-suite con vasca"],
-    color: "from-[#3A1A0A] to-[#B85C38]",
-    accent: "#D4784F",
     size: "32 m²",
     featured: true,
     image:
@@ -32,8 +28,6 @@ const rooms = [
     type: "Doppia Comfort",
     price: "da €95/notte",
     features: ["2 letti singoli", "Balconcino", "AC + WiFi", "Bagno privato"],
-    color: "from-[#1A2A0A] to-[#3A6B28]",
-    accent: "#5A9E40",
     size: "22 m²",
     image:
       "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80",
@@ -46,7 +40,7 @@ export default function RoomsSection() {
       {/* Top wave */}
       <div className="absolute top-0 inset-x-0 pointer-events-none">
         <svg viewBox="0 0 1440 70" className="w-full" preserveAspectRatio="none" aria-hidden>
-          <path d="M0,35 C360,70 1080,0 1440,35 L1440,0 L0,0 Z" fill="#061A14" />
+          <path d="M0,35 C360,70 1080,0 1440,35 L1440,0 L0,0 Z" className="fill-navy" />
         </svg>
       </div>
 
@@ -91,7 +85,7 @@ export default function RoomsSection() {
               transition={{ duration: 0.7, delay: i * 0.12 }}
             >
               {/* Illustrative room photo */}
-              <div className={`relative h-52 bg-linear-to-br ${room.color} overflow-hidden`}>
+              <div className="relative h-52 bg-linear-to-br from-navy-700 via-sea to-sea-light overflow-hidden">
                 <img
                   src={room.image}
                   alt={room.name}
@@ -117,7 +111,7 @@ export default function RoomsSection() {
                 {/* Decorative circle */}
                 <div
                   className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full opacity-20"
-                  style={{ background: `radial-gradient(circle, ${room.accent}, transparent)` }}
+                  style={{ background: "radial-gradient(circle, var(--color-sea-light), transparent)" }}
                 />
               </div>
 
