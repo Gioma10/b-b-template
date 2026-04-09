@@ -15,8 +15,8 @@ export default function HeroSection() {
       {/* ── Panoramic background + emerald overlays ── */}
       <motion.div className="absolute inset-0" style={{ y }}>
         <img
-          src="https://picsum.photos/seed/bnb-panorama-smeralda/2400/1500"
-          alt="Panoramica di un B&B vista mare"
+          src="/hero-costa-smeralda.png"
+          alt="Panoramica della Costa Smeralda"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-theme-hero-base" />
