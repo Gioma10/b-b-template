@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const rooms = [
   {
@@ -11,8 +13,7 @@ const rooms = [
     price: 80,
     size: "18 m²",
     capacity: "2 ospiti",
-    image:
-      "https://picsum.photos/seed/camera-azzurra/1600/1000",
+    image: "https://picsum.photos/seed/camera-azzurra/1600/1000",
     features: [
       "Letto matrimoniale 160×200",
       "Vista sul cortile interno",
@@ -31,8 +32,7 @@ const rooms = [
     price: 130,
     size: "32 m²",
     capacity: "2 ospiti",
-    image:
-      "https://picsum.photos/seed/suite-corallo/1600/1000",
+    image: "https://picsum.photos/seed/suite-corallo/1600/1000",
     featured: true,
     features: [
       "King size bed 180×200",
@@ -52,8 +52,7 @@ const rooms = [
     price: 95,
     size: "22 m²",
     capacity: "2 ospiti",
-    image:
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1600&q=80",
+    image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1600&q=80",
     features: [
       "2 letti singoli separati",
       "Balconcino con vista giardino",
@@ -72,8 +71,7 @@ const rooms = [
     price: 65,
     size: "14 m²",
     capacity: "1 ospite",
-    image:
-      "https://picsum.photos/seed/camera-granito/1600/1000",
+    image: "https://picsum.photos/seed/camera-granito/1600/1000",
     features: [
       "Letto singolo 120×200",
       "Vista cortile",
@@ -86,6 +84,11 @@ const rooms = [
     desc: "Compatta ed efficiente per il viaggiatore solo. Tutto il necessario senza compromessi sul comfort.",
   },
 ];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
+};
 
 export default function CamerePage() {
   return (
@@ -101,9 +104,7 @@ export default function CamerePage() {
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="w-10 h-px bg-gold" />
-              <span className="font-body text-[10px] tracking-[0.3em] uppercase text-gold font-semibold">
-                Alloggi
-              </span>
+              <Badge>Alloggi</Badge>
             </div>
             <h1 className="font-display text-cream font-light text-[clamp(2.5rem,6vw,5rem)] leading-tight mb-4">
               Le nostre <em className="text-gold">Camere</em>
@@ -124,10 +125,11 @@ export default function CamerePage() {
             className={`grid md:grid-cols-2 gap-0 border overflow-hidden ${
               room.featured ? "border-gold/40 shadow-xl shadow-gold/10" : "border-gold/10"
             }`}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: i * 0.08 }}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            style={{ opacity: 0 }}
           >
             {/* Image */}
             <div
@@ -145,9 +147,9 @@ export default function CamerePage() {
               <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-navy/30 to-transparent" />
               <div className="absolute inset-0 dot-bg opacity-15" />
               {room.featured && (
-                <div className="absolute top-4 left-4 bg-gold text-navy text-[10px] tracking-[0.2em] uppercase font-body font-bold px-3 py-1.5">
+                <Badge variant="outline" className="absolute top-4 left-4 bg-gold text-navy border-0 px-3 py-1.5 rounded-none">
                   Più richiesta
-                </div>
+                </Badge>
               )}
               <div className="absolute bottom-4 right-4 flex gap-2">
                 <div className="bg-black/40 backdrop-blur-sm border border-white/10 px-3 py-1">
@@ -186,16 +188,14 @@ export default function CamerePage() {
                     <span className="text-base text-gold/60 font-body font-light">/notte</span>
                   </p>
                 </div>
-                <Link
-                  href="/contatti"
-                  className={`font-body text-[11px] tracking-[0.2em] uppercase font-semibold px-8 py-4 transition-all duration-300 hover:-translate-y-0.5 ${
-                    room.featured
-                      ? "bg-gold text-navy hover:bg-gold-light"
-                      : "border border-gold/40 text-gold hover:bg-gold hover:text-navy"
-                  }`}
+                <Button
+                  asChild
+                  variant={room.featured ? "gold" : "outline"}
+                  size="lg"
+                  className="hover:-translate-y-0.5"
                 >
-                  Prenota
-                </Link>
+                  <Link href="/contatti">Prenota</Link>
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -207,12 +207,9 @@ export default function CamerePage() {
         <p className="font-body text-cream/50 text-sm mb-4">
           Hai bisogno di qualcosa di specifico? Contattaci, troviamo insieme la soluzione.
         </p>
-        <Link
-          href="/contatti"
-          className="inline-flex items-center gap-2 font-body text-gold text-sm tracking-widest uppercase border-b border-gold/30 pb-1 hover:text-gold-light hover:border-gold transition-colors"
-        >
-          Scrivici →
-        </Link>
+        <Button asChild variant="ghost" size="sm">
+          <Link href="/contatti">Scrivici →</Link>
+        </Button>
       </div>
     </div>
   );

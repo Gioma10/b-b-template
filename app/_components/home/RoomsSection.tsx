@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const rooms = [
   {
@@ -35,6 +37,16 @@ const rooms = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
+};
+
 export default function RoomsSection() {
   return (
     <section className="relative py-28 bg-navy-800 overflow-hidden">
@@ -53,12 +65,11 @@ export default function RoomsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          style={{ opacity: 0 }}
         >
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-px bg-gold/50" />
-            <span className="font-body text-[10px] tracking-[0.3em] uppercase text-gold font-semibold">
-              Alloggi
-            </span>
+            <Badge>Alloggi</Badge>
             <div className="w-12 h-px bg-gold/50" />
           </div>
           <h2 className="font-display text-cream font-light text-[clamp(2rem,5vw,3.5rem)] leading-tight">
@@ -71,8 +82,14 @@ export default function RoomsSection() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {rooms.map((room, i) => (
+        <motion.div
+          className="grid md:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {rooms.map((room) => (
             <motion.div
               key={room.name}
               className={`relative group rounded-none overflow-hidden border transition-all duration-500 ${
@@ -80,12 +97,10 @@ export default function RoomsSection() {
                   ? "border-gold/40 shadow-2xl shadow-gold/10 md:-mt-4 md:mb-4"
                   : "border-gold/10 hover:border-gold/25"
               }`}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.12 }}
+              variants={cardVariants}
+              style={{ opacity: 0 }}
             >
-              {/* Illustrative room photo */}
+              {/* Room photo */}
               <div className="relative h-52 bg-linear-to-br from-navy-700 via-sea to-sea-light overflow-hidden">
                 <Image
                   src={room.image}
@@ -95,7 +110,6 @@ export default function RoomsSection() {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/20 to-transparent" />
-                {/* Decorative pattern */}
                 <div className="absolute inset-0 opacity-20 dot-bg" />
 
                 {/* Room size badge */}
@@ -105,12 +119,11 @@ export default function RoomsSection() {
 
                 {/* Featured badge */}
                 {room.featured && (
-                  <div className="absolute top-4 left-4 bg-gold text-navy text-[10px] tracking-[0.2em] uppercase font-body font-bold px-3 py-1">
+                  <Badge variant="outline" className="absolute top-4 left-4 bg-gold text-navy border-0 text-[10px] tracking-[0.2em] px-3 py-1 rounded-none">
                     Più richiesta
-                  </div>
+                  </Badge>
                 )}
 
-                {/* Decorative circle */}
                 <div
                   className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full opacity-20"
                   style={{ background: "radial-gradient(circle, var(--color-sea-light), transparent)" }}
@@ -126,7 +139,6 @@ export default function RoomsSection() {
                   {room.name}
                 </h3>
 
-                {/* Features */}
                 <ul className="space-y-2 mb-6">
                   {room.features.map((f) => (
                     <li key={f} className="flex items-center gap-3 font-body text-cream/55 text-sm">
@@ -136,26 +148,22 @@ export default function RoomsSection() {
                   ))}
                 </ul>
 
-                {/* Price + CTA */}
                 <div className="flex items-center justify-between">
                   <span className="font-display text-gold text-xl font-light">
                     {room.price}
                   </span>
-                  <Link
-                    href="/contatti"
-                    className={`font-body text-[10px] tracking-[0.2em] uppercase font-semibold px-5 py-2.5 transition-all duration-300 ${
-                      room.featured
-                        ? "bg-gold text-navy hover:bg-gold-light"
-                        : "border border-gold/40 text-gold hover:bg-gold hover:text-navy"
-                    }`}
+                  <Button
+                    asChild
+                    variant={room.featured ? "gold" : "outline"}
+                    size="sm"
                   >
-                    Prenota
-                  </Link>
+                    <Link href="/contatti">Prenota</Link>
+                  </Button>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* All rooms link */}
         <motion.div
@@ -164,13 +172,11 @@ export default function RoomsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
+          style={{ opacity: 0 }}
         >
-          <Link
-            href="/camere"
-            className="font-body text-gold text-sm tracking-widest uppercase hover:text-gold-light transition-colors border-b border-gold/30 pb-1 hover:border-gold"
-          >
-            Vedi tutte le camere →
-          </Link>
+          <Button asChild variant="ghost" size="sm">
+            <Link href="/camere">Vedi tutte le camere →</Link>
+          </Button>
         </motion.div>
       </div>
     </section>

@@ -1,23 +1,13 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ACTIVE_COMPANY } from "../_config/companyProfile";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const contactCards = [
-  {
-    title: "Indirizzo",
-    value: ACTIVE_COMPANY.contacts.addressLine,
-    Icon: MapPin,
-  },
-  {
-    title: "Telefono",
-    value: ACTIVE_COMPANY.contacts.phone,
-    Icon: Phone,
-  },
-  {
-    title: "Email",
-    value: ACTIVE_COMPANY.contacts.email,
-    Icon: Mail,
-  },
+  { title: "Indirizzo", value: ACTIVE_COMPANY.contacts.addressLine, Icon: MapPin },
+  { title: "Telefono",  value: ACTIVE_COMPANY.contacts.phone,       Icon: Phone },
+  { title: "Email",     value: ACTIVE_COMPANY.contacts.email,       Icon: Mail },
 ];
 
 export default function ContattiPage() {
@@ -28,16 +18,14 @@ export default function ContattiPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-10 h-px bg-gold" />
-            <span className="font-body text-[10px] tracking-[0.3em] uppercase text-gold font-semibold">
-              Contatti
-            </span>
+            <Badge>Contatti</Badge>
           </div>
           <h1 className="font-display text-cream font-light text-[clamp(2.5rem,6vw,5rem)] leading-tight mb-4">
             Prenota il tuo soggiorno
           </h1>
           <p className="font-body text-cream/55 text-lg max-w-xl leading-relaxed">
             Scrivici o chiamaci e ti rispondiamo in poche ore. Possiamo consigliarti la
-            camera piu adatta e le migliori date.
+            camera più adatta e le migliori date.
           </p>
         </div>
       </section>
@@ -60,10 +48,10 @@ export default function ContattiPage() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="glass p-8 md:p-10">
             <h2 className="font-display text-cream text-4xl font-light mb-3">
-              Richiedi disponibilita
+              Richiedi disponibilità
             </h2>
             <p className="font-body text-cream/50 text-sm mb-8">
-              Questa e una demo visuale: puoi collegare questo blocco al tuo form reale
+              Questa è una demo visuale: puoi collegare questo blocco al tuo form reale
               (email, WhatsApp o CRM) quando vuoi.
             </p>
 
@@ -86,15 +74,12 @@ export default function ContattiPage() {
             />
 
             <div className="mt-6 flex flex-col sm:flex-row gap-4">
-              <button className="bg-gold text-navy text-[11px] tracking-[0.22em] uppercase font-body font-semibold px-8 py-4 hover:bg-gold-light transition-colors">
+              <Button variant="gold" size="lg" type="submit">
                 Invia richiesta
-              </button>
-              <Link
-                href="/camere"
-                className="border border-gold/30 text-gold text-[11px] tracking-[0.22em] uppercase font-body font-semibold px-8 py-4 hover:bg-gold hover:text-navy transition-colors text-center"
-              >
-                Vedi camere
-              </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/camere">Vedi camere</Link>
+              </Button>
             </div>
           </div>
         </div>

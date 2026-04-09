@@ -3,12 +3,14 @@
 import { motion } from "framer-motion";
 import { CircleCheckBig, Gem, KeyRound, Waves, Zap, type LucideIcon } from "lucide-react";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const trustSignals: { label: string; Icon: LucideIcon }[] = [
-  { label: "Check-in H24", Icon: KeyRound },
+  { label: "Check-in H24",            Icon: KeyRound },
   { label: "Cancellazione flessibile", Icon: CircleCheckBig },
-  { label: "Prezzi trasparenti", Icon: Gem },
-  { label: "Risposta rapida", Icon: Zap },
+  { label: "Prezzi trasparenti",       Icon: Gem },
+  { label: "Risposta rapida",          Icon: Zap },
 ];
 
 export default function BookingCTA() {
@@ -33,7 +35,6 @@ export default function BookingCTA() {
         </svg>
       </div>
 
-      {/* Decorative horizontal lines */}
       <div className="absolute top-1/2 inset-x-0 -translate-y-1/2 h-px bg-linear-to-r from-transparent via-gold/15 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -42,6 +43,7 @@ export default function BookingCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9 }}
+          style={{ opacity: 0 }}
         >
           {/* Icon */}
           <div className="flex justify-center mb-8">
@@ -52,9 +54,7 @@ export default function BookingCTA() {
 
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-px bg-gold/50" />
-            <span className="font-body text-[10px] tracking-[0.35em] uppercase text-gold font-semibold">
-              Prenota il tuo soggiorno
-            </span>
+            <Badge>Prenota il tuo soggiorno</Badge>
             <div className="w-12 h-px bg-gold/50" />
           </div>
 
@@ -71,18 +71,22 @@ export default function BookingCTA() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contatti"
-              className="inline-flex items-center justify-center bg-gold text-navy text-[11px] tracking-[0.25em] uppercase font-body font-semibold px-12 py-5 hover:bg-gold-light transition-all duration-300 hover:shadow-2xl hover:shadow-gold/30 hover:-translate-y-1"
+            <Button
+              asChild
+              variant="gold"
+              size="lg"
+              className="hover:shadow-2xl hover:shadow-gold/30 hover:-translate-y-1"
             >
-              Prenota Ora
-            </Link>
-            <Link
-              href="/camere"
-              className="inline-flex items-center justify-center border border-cream/20 text-cream text-[11px] tracking-[0.25em] uppercase font-body font-semibold px-12 py-5 hover:border-gold hover:text-gold transition-all duration-300 hover:-translate-y-1"
+              <Link href="/contatti">Prenota Ora</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline-cream"
+              size="lg"
+              className="hover:-translate-y-1"
             >
-              Vedi le Camere
-            </Link>
+              <Link href="/camere">Vedi le Camere</Link>
+            </Button>
           </div>
 
           {/* Trust signals */}

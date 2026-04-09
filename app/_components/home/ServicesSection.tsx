@@ -2,17 +2,28 @@
 
 import { motion } from "framer-motion";
 import { Car, Coffee, KeyRound, Leaf, Shirt, Snowflake, Tv, Wifi, type LucideIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const services: { Icon: LucideIcon; label: string; desc: string }[] = [
-  { Icon: Wifi, label: "WiFi Gratuito", desc: "Connessione ultra-veloce in tutta la struttura" },
-  { Icon: Snowflake, label: "Aria Condizionata", desc: "Clima perfetto in ogni stagione" },
-  { Icon: Car, label: "Parcheggio Privato", desc: "Posto auto gratuito incluso" },
-  { Icon: Coffee, label: "Colazione", desc: "Prodotti freschi sardi ogni mattina" },
-  { Icon: KeyRound, label: "Check-in H24", desc: "Arrivi a qualsiasi ora, nessun problema" },
-  { Icon: Tv, label: "TV Smart 4K", desc: "Streaming e canali internazionali" },
-  { Icon: Shirt, label: "Cambio Biancheria", desc: "Lenzuola e asciugamani sempre freschi" },
-  { Icon: Leaf, label: "Prodotti Bio", desc: "Amenities naturali e cosmetici locali" },
+  { Icon: Wifi,      label: "WiFi Gratuito",      desc: "Connessione ultra-veloce in tutta la struttura" },
+  { Icon: Snowflake, label: "Aria Condizionata",   desc: "Clima perfetto in ogni stagione" },
+  { Icon: Car,       label: "Parcheggio Privato",  desc: "Posto auto gratuito incluso" },
+  { Icon: Coffee,    label: "Colazione",           desc: "Prodotti freschi sardi ogni mattina" },
+  { Icon: KeyRound,  label: "Check-in H24",        desc: "Arrivi a qualsiasi ora, nessun problema" },
+  { Icon: Tv,        label: "TV Smart 4K",         desc: "Streaming e canali internazionali" },
+  { Icon: Shirt,     label: "Cambio Biancheria",   desc: "Lenzuola e asciugamani sempre freschi" },
+  { Icon: Leaf,      label: "Prodotti Bio",        desc: "Amenities naturali e cosmetici locali" },
 ];
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
 
 export default function ServicesSection() {
   return (
@@ -34,12 +45,11 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          style={{ opacity: 0 }}
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="w-10 h-px bg-gold" />
-            <span className="font-body text-[10px] tracking-[0.3em] uppercase text-gold font-semibold">
-              Servizi inclusi
-            </span>
+            <Badge>Servizi inclusi</Badge>
           </div>
           <h2 className="font-display text-cream font-light text-[clamp(2rem,5vw,3.5rem)] leading-tight">
             Tutto ciò che ti serve,
@@ -49,15 +59,19 @@ export default function ServicesSection() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {services.map((s, i) => (
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {services.map((s) => (
             <motion.div
               key={s.label}
               className="glass p-6 group hover:border-gold/30 hover:bg-gold/5 transition-all duration-500 cursor-default"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
+              variants={cardVariants}
+              style={{ opacity: 0 }}
               whileHover={{ y: -4 }}
             >
               <s.Icon className="h-8 w-8 mb-4 text-gold/90 block group-hover:scale-110 transition-transform duration-300" aria-hidden />
@@ -69,7 +83,7 @@ export default function ServicesSection() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

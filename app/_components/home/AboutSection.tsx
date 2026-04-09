@@ -2,12 +2,24 @@
 
 import { motion } from "framer-motion";
 import { ACTIVE_COMPANY } from "../../_config/companyProfile";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const values = [
   { title: "Posizione Strategica",  desc: ACTIVE_COMPANY.about.strategicDesc },
   { title: "Accoglienza Autentica", desc: "Lo spirito sardo dell'ospitalità. Caloroso, sincero, indimenticabile." },
   { title: "Comfort Garantito",     desc: "Camere curate nei minimi dettagli per un riposo perfetto in qualsiasi stagione." },
 ];
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, x: 30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
 
 export default function AboutSection() {
   return (
@@ -33,9 +45,7 @@ export default function AboutSection() {
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-10 h-px bg-gold" />
-                <span className="font-body text-[10px] tracking-[0.3em] uppercase text-gold font-semibold">
-                  La nostra storia
-                </span>
+                <Badge>La nostra storia</Badge>
               </div>
 
               <h2 className="font-display text-cream font-light leading-tight mb-6 text-[clamp(2.2rem,5vw,4rem)]">
@@ -64,32 +74,33 @@ export default function AboutSection() {
           </div>
 
           {/* Right – values grid */}
-          <div className="flex flex-col gap-6">
+          <motion.div
+            className="flex flex-col gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {values.map((v, i) => (
-              <motion.div
-                key={v.title}
-                className="glass p-7 group hover:border-gold/30 transition-all duration-500"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
-              >
-                <div className="flex items-start gap-5">
-                  <span className="text-gold font-display text-4xl font-light opacity-30 leading-none select-none group-hover:opacity-60 transition-opacity duration-300">
-                    0{i + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-body text-cream font-semibold text-sm tracking-wide mb-2 group-hover:text-gold transition-colors duration-300">
-                      {v.title}
-                    </h3>
-                    <p className="font-body text-cream/50 text-sm leading-relaxed">
-                      {v.desc}
-                    </p>
-                  </div>
-                </div>
+              <motion.div key={v.title} variants={cardVariants} style={{ opacity: 0 }}>
+                <Card>
+                  <CardHeader>
+                    <span className="text-gold font-display text-4xl font-light opacity-30 leading-none select-none group-hover:opacity-60 transition-opacity duration-300">
+                      0{i + 1}
+                    </span>
+                    <div>
+                      <CardTitle>{v.title}</CardTitle>
+                      <CardContent>
+                        <p className="font-body text-cream/50 text-sm leading-relaxed">
+                          {v.desc}
+                        </p>
+                      </CardContent>
+                    </div>
+                  </CardHeader>
+                </Card>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

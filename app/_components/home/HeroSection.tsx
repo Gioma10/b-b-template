@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react";
 import { ACTIVE_COMPANY } from "../../_config/companyProfile";
+import { Button } from "@/components/ui/button";
 
 const particles = Array.from({ length: 40 }, (_, i) => {
   const x = (i * 37) % 100;
@@ -145,18 +146,22 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <Link
-            href="/contatti"
-            className="inline-flex items-center justify-center bg-gold text-navy text-[11px] tracking-[0.25em] uppercase font-body font-semibold px-10 py-4 hover:bg-gold-light transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
+          <Button
+            asChild
+            variant="gold"
+            size="lg"
+            className="hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
           >
-            Contattaci
-          </Link>
-          <Link
-            href="/camere"
-            className="inline-flex items-center justify-center border border-cream/25 text-cream text-[11px] tracking-[0.25em] uppercase font-body font-semibold px-10 py-4 hover:border-gold hover:text-gold transition-all duration-300 hover:-translate-y-0.5"
+            <Link href="/contatti">Contattaci</Link>
+          </Button>
+          <Button
+            asChild
+            variant="outline-cream"
+            size="lg"
+            className="hover:-translate-y-0.5"
           >
-            Scopri le Camere
-          </Link>
+            <Link href="/camere">Scopri le Camere</Link>
+          </Button>
         </motion.div>
       </motion.div>
 

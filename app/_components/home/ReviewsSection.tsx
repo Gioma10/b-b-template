@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const reviews = [
   {
@@ -36,6 +38,16 @@ const reviews = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
+};
+
 function StarRating({ count }: { count: number }) {
   return (
     <div className="flex gap-1">
@@ -68,13 +80,12 @@ export default function ReviewsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          style={{ opacity: 0 }}
         >
           <div>
             <div className="flex items-center gap-4 mb-6">
               <div className="w-10 h-px bg-gold" />
-              <span className="font-body text-[10px] tracking-[0.3em] uppercase text-gold font-semibold">
-                Recensioni
-              </span>
+              <Badge>Recensioni</Badge>
             </div>
             <h2 className="font-display text-cream font-light text-[clamp(2rem,5vw,3.5rem)] leading-tight">
               Cosa dicono i
@@ -96,8 +107,14 @@ export default function ReviewsSection() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {reviews.map((r, i) => (
+        <motion.div
+          className="grid md:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {reviews.map((r) => (
             <motion.div
               key={r.name}
               className={`relative p-8 border transition-all duration-500 group ${
@@ -105,10 +122,8 @@ export default function ReviewsSection() {
                   ? "border-gold/40 bg-navy-600 shadow-xl shadow-gold/10"
                   : "border-gold/10 bg-navy-700 hover:border-gold/25 hover:bg-navy-600"
               }`}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.12 }}
+              variants={cardVariants}
+              style={{ opacity: 0 }}
             >
               {/* Quote mark */}
               <div className="font-display text-7xl text-gold/10 leading-none -mt-2 mb-2 select-none">
@@ -123,11 +138,9 @@ export default function ReviewsSection() {
 
               {/* Reviewer */}
               <div className="flex items-center gap-4 pt-5 border-t border-gold/10">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-body font-semibold shrink-0 ${r.avatarClass}`}
-                >
-                  {r.initial}
-                </div>
+                <Avatar>
+                  <AvatarFallback className={r.avatarClass}>{r.initial}</AvatarFallback>
+                </Avatar>
                 <div className="min-w-0">
                   <p className="font-body text-cream text-sm font-semibold">{r.name}</p>
                   <p className="font-body text-cream/40 text-xs">{r.origin}</p>
@@ -139,7 +152,7 @@ export default function ReviewsSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
