@@ -13,7 +13,7 @@ const rooms = [
     price: 80,
     size: "18 m²",
     capacity: "2 ospiti",
-    image: "https://picsum.photos/seed/camera-azzurra/1600/1000",
+    image: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1600&q=80",
     features: [
       "Letto matrimoniale 160×200",
       "Vista sul cortile interno",
@@ -32,7 +32,7 @@ const rooms = [
     price: 130,
     size: "32 m²",
     capacity: "2 ospiti",
-    image: "https://picsum.photos/seed/suite-corallo/1600/1000",
+    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1600&q=80",
     featured: true,
     features: [
       "King size bed 180×200",
@@ -71,7 +71,7 @@ const rooms = [
     price: 65,
     size: "14 m²",
     capacity: "1 ospite",
-    image: "https://picsum.photos/seed/camera-granito/1600/1000",
+    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1600&q=80",
     features: [
       "Letto singolo 120×200",
       "Vista cortile",
