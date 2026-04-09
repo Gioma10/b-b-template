@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const rooms = [
   {
@@ -85,10 +86,6 @@ const rooms = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
-};
 
 export default function CamerePage() {
   return (
@@ -120,16 +117,11 @@ export default function CamerePage() {
       {/* Rooms */}
       <div className="max-w-7xl mx-auto px-6 py-16 space-y-8">
         {rooms.map((room, i) => (
-          <motion.div
-            key={room.name}
+          <ScrollReveal key={room.name} from="bottom" delay={i * 0.08} duration={0.7}>
+          <div
             className={`grid md:grid-cols-2 gap-0 border overflow-hidden ${
               room.featured ? "border-gold/40 shadow-xl shadow-gold/10" : "border-gold/10"
             }`}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-            style={{ opacity: 0 }}
           >
             {/* Image */}
             <div
@@ -198,7 +190,8 @@ export default function CamerePage() {
                 </Button>
               </div>
             </div>
-          </motion.div>
+          </div>
+          </ScrollReveal>
         ))}
       </div>
 

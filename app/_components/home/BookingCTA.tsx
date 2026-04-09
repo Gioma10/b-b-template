@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { CircleCheckBig, Gem, KeyRound, Waves, Zap, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +15,9 @@ const trustSignals: { label: string; Icon: LucideIcon }[] = [
 ];
 
 export default function BookingCTA() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
     <section className="relative py-32 overflow-hidden">
       {/* Background */}
@@ -39,11 +43,9 @@ export default function BookingCTA() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-          style={{ opacity: 0 }}
+          ref={ref}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
         >
           {/* Icon */}
           <div className="flex justify-center mb-8">

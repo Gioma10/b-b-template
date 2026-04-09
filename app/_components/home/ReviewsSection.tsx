@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const reviews = [
   {
@@ -38,25 +40,49 @@ const reviews = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
-};
-
 function StarRating({ count }: { count: number }) {
   return (
     <div className="flex gap-1">
       {Array.from({ length: 5 }).map((_, i) => (
-        <span key={i} className={i < count ? "text-gold" : "text-cream/20"}>
-          ★
-        </span>
+        <span key={i} className={i < count ? "text-gold" : "text-cream/20"}>★</span>
       ))}
     </div>
+  );
+}
+
+function Header({ avg, count }: { avg: number; count: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
+
+  return (
+    <motion.div
+      ref={ref}
+      className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8"
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <div>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-10 h-px bg-gold" />
+          <Badge>Recensioni</Badge>
+        </div>
+        <h2 className="font-display text-cream font-light text-[clamp(2rem,5vw,3.5rem)] leading-tight">
+          Cosa dicono i
+          <br />
+          <em className="text-gold">nostri ospiti</em>
+        </h2>
+      </div>
+
+      <div className="glass px-8 py-6 text-center">
+        <div className="font-display text-gold text-6xl font-light leading-none mb-1">
+          {avg.toFixed(1)}
+        </div>
+        <StarRating count={Math.round(avg)} />
+        <p className="font-body text-cream/50 text-xs mt-3">
+          su {count * 10}+ recensioni
+        </p>
+      </div>
+    </motion.div>
   );
 }
 
@@ -65,7 +91,6 @@ export default function ReviewsSection() {
 
   return (
     <section className="relative py-28 bg-navy overflow-hidden">
-      {/* Top wave */}
       <div className="absolute top-0 inset-x-0 pointer-events-none">
         <svg viewBox="0 0 1440 70" className="w-full" preserveAspectRatio="none" aria-hidden>
           <path d="M0,0 C480,70 960,0 1440,50 L1440,0 Z" className="fill-navy" />
@@ -73,86 +98,42 @@ export default function ReviewsSection() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          style={{ opacity: 0 }}
-        >
-          <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-px bg-gold" />
-              <Badge>Recensioni</Badge>
-            </div>
-            <h2 className="font-display text-cream font-light text-[clamp(2rem,5vw,3.5rem)] leading-tight">
-              Cosa dicono i
-              <br />
-              <em className="text-gold">nostri ospiti</em>
-            </h2>
-          </div>
+        <Header avg={avg} count={reviews.length} />
 
-          {/* Score */}
-          <div className="glass px-8 py-6 text-center">
-            <div className="font-display text-gold text-6xl font-light leading-none mb-1">
-              {avg.toFixed(1)}
-            </div>
-            <StarRating count={Math.round(avg)} />
-            <p className="font-body text-cream/50 text-xs mt-3">
-              su {reviews.length * 10}+ recensioni
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Cards */}
-        <motion.div
-          className="grid md:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {reviews.map((r) => (
-            <motion.div
-              key={r.name}
-              className={`relative p-8 border transition-all duration-500 group ${
-                r.featured
-                  ? "border-gold/40 bg-navy-600 shadow-xl shadow-gold/10"
-                  : "border-gold/10 bg-navy-700 hover:border-gold/25 hover:bg-navy-600"
-              }`}
-              variants={cardVariants}
-              style={{ opacity: 0 }}
-            >
-              {/* Quote mark */}
-              <div className="font-display text-7xl text-gold/10 leading-none -mt-2 mb-2 select-none">
-                &ldquo;
-              </div>
-
-              <StarRating count={r.rating} />
-
-              <p className="font-body text-cream/65 text-sm leading-relaxed mt-4 mb-6 italic">
-                &ldquo;{r.text}&rdquo;
-              </p>
-
-              {/* Reviewer */}
-              <div className="flex items-center gap-4 pt-5 border-t border-gold/10">
-                <Avatar>
-                  <AvatarFallback className={r.avatarClass}>{r.initial}</AvatarFallback>
-                </Avatar>
-                <div className="min-w-0">
-                  <p className="font-body text-cream text-sm font-semibold">{r.name}</p>
-                  <p className="font-body text-cream/40 text-xs">{r.origin}</p>
+        <div className="grid md:grid-cols-3 gap-6">
+          {reviews.map((r, i) => (
+            <ScrollReveal key={r.name} from="bottom" delay={i * 0.15} duration={0.7}>
+              <div
+                className={`relative p-8 border transition-all duration-500 group ${
+                  r.featured
+                    ? "border-gold/40 bg-navy-600 shadow-xl shadow-gold/10"
+                    : "border-gold/10 bg-navy-700 hover:border-gold/25 hover:bg-navy-600"
+                }`}
+              >
+                <div className="font-display text-7xl text-gold/10 leading-none -mt-2 mb-2 select-none">
+                  &ldquo;
                 </div>
-                <div className="ml-auto text-right">
-                  <p className="font-body text-gold/70 text-[10px] tracking-wide">{r.platform}</p>
-                  <p className="font-body text-cream/30 text-[10px]">{r.date}</p>
+                <StarRating count={r.rating} />
+                <p className="font-body text-cream/65 text-sm leading-relaxed mt-4 mb-6 italic">
+                  &ldquo;{r.text}&rdquo;
+                </p>
+                <div className="flex items-center gap-4 pt-5 border-t border-gold/10">
+                  <Avatar>
+                    <AvatarFallback className={r.avatarClass}>{r.initial}</AvatarFallback>
+                  </Avatar>
+                  <div className="min-w-0">
+                    <p className="font-body text-cream text-sm font-semibold">{r.name}</p>
+                    <p className="font-body text-cream/40 text-xs">{r.origin}</p>
+                  </div>
+                  <div className="ml-auto text-right">
+                    <p className="font-body text-gold/70 text-[10px] tracking-wide">{r.platform}</p>
+                    <p className="font-body text-cream/30 text-[10px]">{r.date}</p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </ScrollReveal>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
